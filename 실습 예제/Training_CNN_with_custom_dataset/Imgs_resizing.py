@@ -1,3 +1,8 @@
+import os
+import cv2
+import numpy as np
+from sklearn.model_selection import train_test_split
+
 groups_folder_path = './CNN_sample/'
 categories = ["Walking","Lay_down","Crouch","Hitchhiking","Stop"]
 num_classes = len(categories)

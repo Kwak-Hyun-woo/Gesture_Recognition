@@ -4,6 +4,10 @@ from keras.layers import Flatten, Convolution2D, MaxPooling2D
 from keras.models import load_model
 import cv2
 
+np_load_old = np.load
+
+np.load = lambda *a, **k: np_load_old(*a, allow_pickle = True, **k)
+
 X_train, X_test, Y_train, Y_test = np.load('./img_data.npy')
 
 model = Sequential()
@@ -29,4 +33,4 @@ model.add(Dense(num_classes, activation='softmax'))
 model.compile(loss='binary_crossentropy', optimizer='Adam', metrics=['accuracy'])
 model.fit(X_train, Y_train, batch_size=32, nb_epoch=100)
 
-model.save('Gersang.h5')
+model.save('Gesture_recognition.h5')
